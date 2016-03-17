@@ -1,0 +1,8 @@
+;MOD LOC file
+
+[TORPEDO_TRIPLE X2WeaponTemplate]
+FriendlyName="Triple Torpedo Mount"
+FriendlyNamePlural="Triple Torpedo Mount"
+BriefSummary="The Starndard Torpedo Mount for Heavy Crusiers. An explosive weapon at close range."
+TacticalText="We have invented Torpedo that not only swims and also flies, making Kanmusu operating on ground possible."
+AbilityDescName="Launch Triple Torpedoes"

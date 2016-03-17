@@ -30,7 +30,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	local array<X2DataTemplate> ModWeapons;
 
 	ModWeapons.AddItem(CreateTemplate_Torpedo_Triple_Conventional());
-//	ModWeapons.AddItem(CreateTemplate_Torpedo_Quad_Magnetic());
+	ModWeapons.AddItem(CreateTemplate_Torpedo_Quad_Magnetic());
 //	ModWeapons.AddItem(CreateTemplate_Torpedo_Pent_Beam());
 
 	return ModWeapons;

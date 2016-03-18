@@ -6,3 +6,23 @@ FriendlyNamePlural="Triple Torpedo Mount"
 BriefSummary="The Starndard Torpedo Mount for Heavy Crusiers. An explosive weapon at close range."
 TacticalText="We have invented Torpedo that not only swims and also flies, making Kanmusu operating on ground possible."
 AbilityDescName="Launch Triple Torpedoes"
+
+
+[HeavyCrusier X2SoldierClassTemplate]
+DisplayName="HeavyCrusier"
+ClassSummary="Ship Class designed to Operate at Short to Medium range and having balanced speed and armor. Armed with Medium range Cannons and Torpedos for short range."
+LeftAbilityTreeTitle="Fire Support"
+RightAbilityTreeTitle="Assult"
+
+RandomNickNames_Female[0]="Myoukou"
+RandomNickNames_Female[1]="Takao"
+RandomNickNames_Female[2]="Furutaka"
+
+
+; ---------- General Path -----------------
+[FirstAid X2AbilityTemplate]
++LocFriendlyName="First Aid"
++LocLongDescription="Specialized training provides +1 healing with medikits and each medikit equipped provides 2 charges. Passive."
++LocHelpText="Gain +1 healing with medikits and each medikit equipped provides 2 charges."
++LocFlyOverText="First Aid"
++LocPromotionPopupText="<Bullet/> +1 Healing from medikits.<br/><Bullet/> Each medikit equipped provides 2 charges.<br/><Bullet/> Passive.<br/>"

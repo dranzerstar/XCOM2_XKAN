@@ -18,7 +18,13 @@
     <Content Include="Config\XComGameData.ini">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Config\XComGameData_SoldierSkills.ini">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Config\XComSubWeaponTorpedo.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\UILibrary_XKANCA.upk">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Localization\XComGame.int">
@@ -26,6 +32,9 @@
     </Content>
     <Content Include="ModPreview.jpg" />
     <Content Include="ReadMe.txt" />
+    <Content Include="Src\XKanCAClass\Classes\X2Ability_TorpedoWeapons.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\XKanCAClass\Classes\X2Item_Torpedo_Weapon.uc">
       <SubType>Content</SubType>
     </Content>

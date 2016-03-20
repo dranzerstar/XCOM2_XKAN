@@ -3,14 +3,15 @@
 [TORPEDO_TRIPLE X2WeaponTemplate]
 FriendlyName="Triple Torpedo Mount"
 FriendlyNamePlural="Triple Torpedo Mount"
-BriefSummary="The Starndard Torpedo Mount for Heavy Crusiers. An explosive weapon at close range."
+BriefSummary="<Bullet/> The Starndard Torpedo Mount for Heavy Crusiers.<br/><Bullet/>An explosive weapon at close range.<br/>"
 TacticalText="We have invented Torpedo that not only swims and also flies, making Kanmusu operating on ground possible."
 AbilityDescName="Launch Triple Torpedoes"
 
 
 [HeavyCrusier X2SoldierClassTemplate]
 DisplayName="HeavyCrusier"
-ClassSummary="Ship Class designed to Operate at Short to Medium range and having balanced speed and armor. Armed with Medium range Cannons and Torpedos for short range."
+ClassSummary="<Bullet/>Ship Class designed to Operate at Short to Medium range and having balanced speed and armor.<br/><Bullet/>Armed with Medium range Cannons and Torpedos for short range.<br/>"
+
 LeftAbilityTreeTitle="Fire Support"
 RightAbilityTreeTitle="Assult"
 
@@ -26,3 +27,20 @@ RandomNickNames_Female[2]="Furutaka"
 +LocHelpText="Gain +1 healing with medikits and each medikit equipped provides 2 charges."
 +LocFlyOverText="First Aid"
 +LocPromotionPopupText="<Bullet/> +1 Healing from medikits.<br/><Bullet/> Each medikit equipped provides 2 charges.<br/><Bullet/> Passive.<br/>"
+
+
+; ---------- Torpedo Mount Weapon Ability -----------------
+[LaunchTorpedo X2AbilityTemplate]
++LocFriendlyName="Launch Torpedo"
++LocLongDescription="Launch Torpedo currently Inside of your Torpedo Mount. Damage, Range, Radius depends on the current Mount Equipped."
++LocHelpText="Launch your currently mounted torpedoes"
++LocFlyOverText="Launch Torpedo"
++LocPromotionPopupText="<Bullet/>Torpedo Away!<br/>"
+
+
+[ReloadTorpedo X2AbilityTemplate]
++LocFriendlyName="Reload Torpedo Mount"
++LocLongDescription="Reloads your currently Equipped Torpedo Mount. Takes 1 Action point."
++LocHelpText="Reload your Torpedo Mount."
++LocFlyOverText="Reload Torpedo Mount"
++LocPromotionPopupText="<Bullet/>Reloads Torpedo Mount.<br/><Bullet/> Takes 1 action point."

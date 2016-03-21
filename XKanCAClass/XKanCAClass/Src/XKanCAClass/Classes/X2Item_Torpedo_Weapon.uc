@@ -50,7 +50,7 @@ static function X2DataTemplate CreateTemplate_Torpedo_Triple_Conventional()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'Torpedo_sub';
 	Template.WeaponTech = 'conventional';
-	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base"; //TODO
+	Template.strImage = "img:///UILibrary_XKANCA.Torp_Trip"; //TODO
 	Template.Tier = 0;
 
 	Template.BaseDamage =default.TORP_TRIPLE_BASEDAMAGE;
@@ -72,7 +72,11 @@ static function X2DataTemplate CreateTemplate_Torpedo_Triple_Conventional()
 	Template.GameArchetype = "WP_Heavy_RocketLauncher.WP_Heavy_RocketLauncher";  //BORROW ROCKET LAUNCHER MODEL AND ANIM
 
 
-	Template.Abilities.AddItem('StandardShot');	 //TODO
+	//Template.Abilities.AddItem('StandardShot');	 //TODO
+	Template.Abilities.AddItem('ReloadTorpedo'); //TODO
+	Template.Abilities.AddItem('LaunchTorpedo'); 
+	Template.Abilities.AddItem('RocketFuse'); //TODO
+
 
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';

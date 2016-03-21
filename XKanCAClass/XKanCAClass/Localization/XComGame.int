@@ -20,13 +20,13 @@ RandomNickNames_Female[1]="Takao"
 RandomNickNames_Female[2]="Furutaka"
 
 
-; ---------- General Path -----------------
-[FirstAid X2AbilityTemplate]
-+LocFriendlyName="First Aid"
-+LocLongDescription="Specialized training provides +1 healing with medikits and each medikit equipped provides 2 charges. Passive."
-+LocHelpText="Gain +1 healing with medikits and each medikit equipped provides 2 charges."
-+LocFlyOverText="First Aid"
-+LocPromotionPopupText="<Bullet/> +1 Healing from medikits.<br/><Bullet/> Each medikit equipped provides 2 charges.<br/><Bullet/> Passive.<br/>"
+; ---------- Ability Template -----------------
+[TemplateClass X2AbilityTemplate]
++LocFriendlyName="Display name"
++LocLongDescription=""
++LocHelpText=""
++LocFlyOverText="Text When Hover over"
++LocPromotionPopupText="Desc under soilder level up page"
 
 
 ; ---------- Torpedo Mount Weapon Ability -----------------

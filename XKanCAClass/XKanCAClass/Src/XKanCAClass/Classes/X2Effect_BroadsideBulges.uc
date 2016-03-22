@@ -1,6 +1,6 @@
 // This is an Unreal Script
 
-class X2Effect_BroadsideArmor extends X2Effect_BonusArmor config(GameData_SoldierSkills);
+class X2Effect_BroadsideBulges extends X2Effect_BonusArmor config(GameData_SoldierSkills);
 
 var float FlankDamageReduction;
 var config int ARMOR_CHANCE, ARMOR_MITIGATION;

@@ -3,13 +3,15 @@
 class X2Ability_CAClass extends X2Ability
 		dependson (XComGameStateContext_Ability) config(GameData_SoldierSkills); //Find the related ini
 
+var config int FLANK_DAMAGE_REDUCTION;
+
 
 // Add abilities to game data
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
 	
-	//Templates.AddItem( BroadsideCannon() );
+	Templates.AddItem( BroadsideBulges() );
 
 	
 	return Templates;
@@ -53,7 +55,7 @@ static function X2AbilityTemplate BroadsideBulges()
 
 	Template.bCrossClassEligible = true;
 
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, eStat_ArmorMitigation, PaddingEffect.ARMOR_MITIGATION);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.ArmorLabel, eStat_ArmorMitigation, BulgesEffect.ARMOR_MITIGATION);
 
 	return Template;
 

@@ -32,7 +32,13 @@
     </Content>
     <Content Include="ModPreview.jpg" />
     <Content Include="ReadMe.txt" />
+    <Content Include="Src\XKanCAClass\Classes\X2Ability_CAClass.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\XKanCAClass\Classes\X2Ability_TorpedoWeapons.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\XKanCAClass\Classes\X2Effect_BroadsideBulges.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\XKanCAClass\Classes\X2Item_Torpedo_Weapon.uc">

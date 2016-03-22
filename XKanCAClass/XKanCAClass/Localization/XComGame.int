@@ -44,3 +44,96 @@ RandomNickNames_Female[2]="Furutaka"
 +LocHelpText="Reload your Torpedo Mount."
 +LocFlyOverText="Reload Torpedo Mount"
 +LocPromotionPopupText="<Bullet/>Reloads Torpedo Mount.<br/><Bullet/> Takes 1 action point."
+
+
+
+; ---------- Class Abilities -----------------
+; T1 Skills   Fire Support: BroadsideCannon     Assault: BroadsideBulges
+
+[BroadsideCannon X2AbilityTemplate]
++LocFriendlyName="Broadside Cannons"
++LocLongDescription="Taking time readying your Broadside Main Weapons increses their aim."
++LocHelpText="Incresed Hit Chance for Overwatch and Reaction shots"
++LocFlyOverText="Broadside Cannons"
++LocPromotionPopupText="<Bullet/>Incresed Aim when taking an Overwatch/Reaction Shot.<br/>"
+
+[BroadsideBulges X2AbilityTemplate]
++LocFriendlyName="Broadside Bulges"
++LocLongDescription="An extra layer of Armor to help you Survive on Charges."
++LocHelpText="Gain an additional point of Armor and decresed damage when taking a flanking shot."
++LocFlyOverText="Broadside Bulges"
++LocPromotionPopupText="<Bullet/>Gain 1 point of armor.<br/><Bullet/>Take less damage when being flanked.<br/>"
+
+
+; T2 Skills   Fire Support: Preparedness     Assault: Enhanced Torpedo Warhead
+[preparedness X2AbilityTemplate]
++LocFriendlyName="Preparedness"
++LocLongDescription="Taking time readying your Broadside Main Weapons increses their aim."
++LocHelpText="First Shot on your Clip of your Main weapons deals extra damage."
++LocFlyOverText="Preparedness"
++LocPromotionPopupText="<Bullet/>Extra Damage on the first shot of the clip.<br/>"
+
+[Torpedowarhead X2AbilityTemplate]
++LocFriendlyName="Enhanced Torpedo Warhead"
++LocLongDescription="Enhanced Warheads on your torpedo allows them to penatrate deeper before denonating."
++LocHelpText="Attacks with your torpedo Mount gains additional Armor Pirecing"
++LocFlyOverText="Enhanced Torpedo Warhead"
++LocPromotionPopupText="<Bullet/>Torpedo attacks gains additional Armor Pirecing value.<br/>"
+
+; T2 Skills   Fire Support: Preparedness     Assault: Enhanced Torpedo Warhead
+[preparedness X2AbilityTemplate]
++LocFriendlyName="Preparedness"
++LocLongDescription="Taking time readying your Broadside Main Weapons increses their aim."
++LocHelpText="First Shot on your Clip of your Main weapons deals extra damage."
++LocFlyOverText="Preparedness"
++LocPromotionPopupText="<Bullet/>Extra Damage on the first shot of the clip.<br/>"
+
+[Torpedowarhead X2AbilityTemplate]
++LocFriendlyName="Enhanced Torpedo Warhead"
++LocLongDescription="Enhanced Warheads on your torpedo allows them to penatrate deeper before denonating."
++LocHelpText="Attacks with your torpedo Mount gains additional Armor Pirecing"
++LocFlyOverText="Enhanced Torpedo Warhead"
++LocPromotionPopupText="<Bullet/>Torpedo attacks gains additional Armor Pirecing value.<br/>"
+
+; T3 Skills   Fire Support: Radar Scan       Assault: Turbine Boost 
+[Radarscan X2AbilityTemplate]
++LocFriendlyName="Radar scan"
++LocLongDescription="Scan a target who is behind cover with your build in Radar, reducing their defence for a turn."
++LocHelpText="Take an action to Scan a target who is behind cover, reducing it's defence."
++LocFlyOverText="Preparedness"
++LocPromotionPopupText="<Bullet/>Extra Damage on the first shot of the clip.<br/>"
+
+[TurbineBoost X2AbilityTemplate]
++LocFriendlyName="Turbine Booster"
++LocLongDescription="Activate the built in Turbine Booster to grant extra Mobility and Action Point this turn. Cooldown 4 turns."
++LocHelpText="Activate to increase Mobility and gain an extra Action point this turn.CD 4T"
++LocFlyOverText="Turbine Booster"
++LocPromotionPopupText="<Bullet/>Activate to gain Mobility and Action point.<br/><Bullet/>Cooldown 4 turns.<br/>"
+
+
+; T4 Skills   Fire Support: Enhanced Torpedo Luanching        Assault: Oxygen Torpedos 
+[Advtorpedoluanching X2AbilityTemplate]
++LocFriendlyName="Enhanced Torpedo Luanching"
++LocLongDescription="Enhanced Torpedo Launchers for you mount increasing torpedo velocity and travel distance. Increasing range and chance to cause Disorientation. "
++LocHelpText="Torpedo attacks gains range and chance to cuase Disorientation"
++LocFlyOverText="Enhanced Torpedo Luanching"
++LocPromotionPopupText="<Bullet/>Increase the trave range of your torpedo. Also gives a chance to cause Disorientation <br/>"
+
+[Oxygentorpedo X2AbilityTemplate]
++LocFriendlyName=""
++LocLongDescription=""
++LocHelpText="Activate to increase Mobility and gain an extra Action point this turn.CD 4T"
++LocFlyOverText="Turbine Booster"
++LocPromotionPopupText="<Bullet/>Activate to gain Mobility and Action point.<br/><Bullet/>Cooldown 4 turns.<br/>"
+
+
+; T5 Skills   Fire Support: Covering Fire        Assault: Torpedo Auto loader
+
+
+
+; T6 Skills   Fire Support: Artillery Spotting attack     Assault: Chained Torpedo 
+
+
+
+
+ 

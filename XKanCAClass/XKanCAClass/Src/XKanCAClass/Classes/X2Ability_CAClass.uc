@@ -5,7 +5,7 @@ class X2Ability_CAClass extends X2Ability
 
 var config int FLANK_DAMAGE_REDUCTION;
 var config int TURBINE_BOOST_MOBILITY;
-
+var config int ADV_LUANCH_RANGE;
 
 // Add abilities to game data
 static function array<X2DataTemplate> CreateTemplates()
@@ -197,4 +197,109 @@ static function SuperKillRestrictions(X2AbilityTemplate Template, name ThisSuper
 	ValueEffect.CleanupType = eCleanup_BeginTurn;
 	Template.AddShooterEffect(ValueEffect);
 }
+//-------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+//  Turbine Auto Loader --------------------------------------------------------------------------
+
+/*
+static function X2AbilityTemplate TorpedoAutoLoader()
+{
+	local X2AbilityTemplate         Template;
+
+	Template = PurePassive('EverVigilant', "img:///UILibrary_PerkIcons.UIPerk_evervigilant");  //TODO
+	Template.AdditionalAbilities.AddItem('TorpedoAutoLoaderTrigger');
+
+	Template.bCrossClassEligible = true;
+
+	return Template;
+}
+
+static function X2AbilityTemplate TorpedoAutoLoaderTrigger()
+{
+	local X2AbilityTemplate                 Template;
+	local X2AbilityTrigger_EventListener    Trigger;
+	local X2Effect_Persistent               TorpedoAutoEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'TorpedoAutoLoaderTrigger');
+
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+
+	Trigger = new class'X2AbilityTrigger_EventListener';
+	Trigger.ListenerData.Deferral = ELD_OnStateSubmitted;
+	Trigger.ListenerData.EventID = 'PlayerTurnEnded';
+	Trigger.ListenerData.Filter = eFilter_Player;
+	Trigger.ListenerData.EventFn = class'XComGameState_Ability'.static.EverVigilantTurnEndListener;
+	Template.AbilityTriggers.AddItem(Trigger);
+
+    VigilantEffect = new class'X2Effect_Persistent';
+	VigilantEffect.EffectName = default.EverVigilantEffectName;
+	VigilantEffect.BuildPersistentEffect(1, false, true, false, eGameRule_PlayerTurnBegin);
+	Template.AddShooterEffect(VigilantEffect);
+
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	
+	return Template;
+}
+
+*/
+
+
+
+
+
+
+//-------------------------------------------------------------------------------------
+
+
+//  Adv torpedo Mount --------------------------------------------------------------------------
+
+static function X2AbilityTemplate Advtorpedoluanching()
+{
+	local X2AbilityTemplate						Template;
+	local X2AbilityTargetStyle                  TargetStyle;
+	local X2AbilityTrigger						Trigger;
+	local X2Effect_VolatileMix                  AdvLuanchEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'Advtorpedoluanching');
+
+	// Icon Properties
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_volatilemix";
+
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	AdvLuanchEffect = new class'X2Effect_VolatileMix';
+	AdvLuanchEffect.BuildPersistentEffect(1, true, true, true);
+	AdvLuanchEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage,,,Template.AbilitySourceName);
+	AdvLuanchEffect.BonusDamage = default.ADV_LUANCH_RANGE;
+	Template.AddTargetEffect(AdvLuanchEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	//  NOTE: No visualization on purpose!
+
+	Template.bCrossClassEligible = true;
+
+	return Template;
+}
+
 //-------------------------------------------------------------------------------------

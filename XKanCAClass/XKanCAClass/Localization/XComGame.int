@@ -80,21 +80,6 @@ RandomNickNames_Female[2]="Furutaka"
 +LocFlyOverText="Enhanced Torpedo Warhead"
 +LocPromotionPopupText="<Bullet/>Torpedo attacks gains additional Armor Pirecing value.<br/>"
 
-; T2 Skills   Fire Support: Preparedness     Assault: Enhanced Torpedo Warhead
-[preparedness X2AbilityTemplate]
-+LocFriendlyName="Preparedness"
-+LocLongDescription="Taking time readying your Broadside Main Weapons increses their aim."
-+LocHelpText="First Shot on your Clip of your Main weapons deals extra damage."
-+LocFlyOverText="Preparedness"
-+LocPromotionPopupText="<Bullet/>Extra Damage on the first shot of the clip.<br/>"
-
-[Torpedowarhead X2AbilityTemplate]
-+LocFriendlyName="Enhanced Torpedo Warhead"
-+LocLongDescription="Enhanced Warheads on your torpedo allows them to penatrate deeper before denonating."
-+LocHelpText="Attacks with your torpedo Mount gains additional Armor Pirecing"
-+LocFlyOverText="Enhanced Torpedo Warhead"
-+LocPromotionPopupText="<Bullet/>Torpedo attacks gains additional Armor Pirecing value.<br/>"
-
 ; T3 Skills   Fire Support: Radar Scan       Assault: Turbine Boost 
 [Radarscan X2AbilityTemplate]
 +LocFriendlyName="Radar scan"
@@ -117,12 +102,12 @@ RandomNickNames_Female[2]="Furutaka"
 +LocLongDescription="Enhanced Torpedo Launchers for you mount increasing torpedo velocity and travel distance. Increasing range and chance to cause Disorientation. "
 +LocHelpText="Torpedo attacks gains range and chance to cuase Disorientation"
 +LocFlyOverText="Enhanced Torpedo Luanching"
-+LocPromotionPopupText="<Bullet/>Increase the trave range of your torpedo. Also gives a chance to cause Disorientation <br/>"
++LocPromotionPopupText="<Bullet/>Increase the travel range of your torpedo. Also gives a chance to cause Disorientation <br/>"
 
 [Oxygentorpedo X2AbilityTemplate]
 +LocFriendlyName=""
 +LocLongDescription=""
-+LocHelpText="Activate to increase Mobility and gain an extra Action point this turn.CD 4T"
++LocHelpText=""
 +LocFlyOverText="Turbine Booster"
 +LocPromotionPopupText="<Bullet/>Activate to gain Mobility and Action point.<br/><Bullet/>Cooldown 4 turns.<br/>"
 

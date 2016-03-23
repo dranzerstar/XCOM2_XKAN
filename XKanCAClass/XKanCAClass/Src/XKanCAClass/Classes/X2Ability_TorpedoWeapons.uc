@@ -42,6 +42,8 @@ static function X2AbilityTemplate TorpedoMountAbility_Standard()
 	WeaponDamageEffect = new class'X2Effect_ApplyWeaponDamage';
 	WeaponDamageEffect.bExplosiveDamage = true;
 	Template.AddMultiTargetEffect(WeaponDamageEffect);
+
+
 	
 	CursorTarget = new class'X2AbilityTarget_Cursor';
 	CursorTarget.bRestrictToWeaponRange = true;
@@ -177,7 +179,6 @@ simulated function TorpedoReloadAbility_BuildVisualization(XComGameState Visuali
 	local XComGameStateHistory History;
 	local XComGameStateContext_Ability  Context;
 	local StateObjectReference          ShootingUnitRef;	
-	local X2Action_PlayAnimation		PlayAnimation;
 
 	local VisualizationTrack        EmptyTrack;
 	local VisualizationTrack        BuildTrack;

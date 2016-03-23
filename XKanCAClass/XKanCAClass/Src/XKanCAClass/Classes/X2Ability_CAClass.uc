@@ -4,6 +4,7 @@ class X2Ability_CAClass extends X2Ability
 		dependson (XComGameStateContext_Ability) config(GameData_SoldierSkills); //Find the related ini
 
 var config int FLANK_DAMAGE_REDUCTION;
+var config int TURBINE_BOOST_MOBILITY;
 
 
 // Add abilities to game data
@@ -12,8 +13,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	local array<X2DataTemplate> Templates;
 	
 	Templates.AddItem( BroadsideBulges() );
+	Templates.AddItem( TurbineBoost());
+	Templates.AddItem(TorpedoWarhead() ); //TODO
 
-	
 	return Templates;
 }
 
@@ -59,5 +61,140 @@ static function X2AbilityTemplate BroadsideBulges()
 
 	return Template;
 
+}
+//-------------------------------------------------------------------------------------
+
+//  Torpedo Warhead Skill --------------------------------------------------------------------------
+static function X2AbilityTemplate TorpedoWarhead() 
+{
+	local X2AbilityTemplate						Template;
+	local X2Effect_TorpedoWarhead                  Effect;
+		local X2AbilityTargetStyle                  TargetStyle;
+	local X2AbilityTrigger						Trigger;
+
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'TorpedoWarhead');
+
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_extrapadding";      //todo
+
+
+
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	Effect = new class'X2Effect_TorpedoWarhead ';
+	Effect.BuildPersistentEffect(1, true, false, false);
+	Template.AddShooterEffect(Effect);
+
+
+	
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	//  NOTE: No visualization on purpose!
+
+
+
+
+	return Template;
+
+}
+
+
+
+
+
+//-------------------------------------------------------------------------------------
+
+
+
+//  Turbine Boost Skill --------------------------------------------------------------------------
+static function X2AbilityTemplate TurbineBoost()
+{
+
+	local X2AbilityTemplate				Template;
+	local X2AbilityCooldown				Cooldown;
+	local X2Effect_GrantActionPoints    ActionPointEffect;
+	local X2AbilityCost_ActionPoints    ActionPointCost;
+	local X2Effect_PersistentStatChange			PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'TurbineBoost');
+
+	// Icon Properties
+	Template.DisplayTargetHitChance = false;
+	Template.AbilitySourceName = 'eAbilitySource_Perk';                                       // color of the icon
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_runandgun";                      //todo
+	Template.ShotHUDPriority = class'UIUtilities_Tactical'.const.CLASS_LIEUTENANT_PRIORITY;
+	Template.Hostility = eHostility_Neutral;
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
+	Template.AbilityConfirmSound = "TacticalUI_Activate_Ability_Run_N_Gun";
+
+	Cooldown = new class'X2AbilityCooldown';
+	Cooldown.iNumTurns = 4;
+	Template.AbilityCooldown = Cooldown;
+
+	ActionPointCost = new class'X2AbilityCost_ActionPoints';
+	ActionPointCost.iNumPoints = 1;
+	ActionPointCost.bFreeCost = true;
+	Template.AbilityCosts.AddItem(ActionPointCost);
+
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	SuperKillRestrictions(Template, 'RunAndGun_SuperKillCheck');
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+	Template.AddShooterEffectExclusions();
+
+	ActionPointEffect = new class'X2Effect_GrantActionPoints';
+	ActionPointEffect.NumActionPoints = 1;
+	ActionPointEffect.PointType = class'X2CharacterTemplateManager'.default.RunAndGunActionPoint;
+	Template.AddTargetEffect(ActionPointEffect);
+
+	Template.AbilityTargetStyle = default.SelfTarget;	
+	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
+
+	Template.bShowActivation = true;
+	Template.bSkipFireAction = true;
+
+	Template.ActivationSpeech = 'RunAndGun';
+		
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+
+	Template.bCrossClassEligible = true;
+
+
+		// Stat Boost
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.EffectName = 'TurbineBooster';
+	PersistentStatChangeEffect.BuildPersistentEffect(1,,,,eGameRule_PlayerTurnEnd);
+	PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.GetMyHelpText(), Template.IconImage);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Dodge, default.TURBINE_BOOST_MOBILITY);
+	PersistentStatChangeEffect.DuplicateResponse = eDupe_Refresh;
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+
+	return Template;
+
+}
+
+static function SuperKillRestrictions(X2AbilityTemplate Template, name ThisSuperKill)
+{
+	local X2Condition_UnitValue ValueCondition;
+	local X2Effect_SetUnitValue ValueEffect;
+
+	ValueCondition = new class'X2Condition_UnitValue';
+	ValueCondition.AddCheckValue('RunAndGun_SuperKillCheck', 0, eCheck_Exact,,,'AA_RunAndGunUsed');
+	Template.AbilityShooterConditions.AddItem(ValueCondition);
+
+	ValueEffect = new class'X2Effect_SetUnitValue';
+	ValueEffect.UnitName = ThisSuperKill;
+	ValueEffect.NewValueToSet = 1;
+	ValueEffect.CleanupType = eCleanup_BeginTurn;
+	Template.AddShooterEffect(ValueEffect);
 }
 //-------------------------------------------------------------------------------------

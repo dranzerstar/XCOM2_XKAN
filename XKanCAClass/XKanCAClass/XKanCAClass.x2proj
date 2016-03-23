@@ -41,6 +41,9 @@
     <Content Include="Src\XKanCAClass\Classes\X2Effect_BroadsideBulges.uc">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Src\XKanCAClass\Classes\X2Effect_TorpedoWarhead.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\XKanCAClass\Classes\X2Item_Torpedo_Weapon.uc">
       <SubType>Content</SubType>
     </Content>

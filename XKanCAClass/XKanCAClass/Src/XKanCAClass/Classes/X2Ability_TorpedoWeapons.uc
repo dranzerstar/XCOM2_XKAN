@@ -3,6 +3,7 @@
 
 class X2Ability_TorpedoWeapons extends X2Ability config(GameData_SoldierSkills);
 
+var config int ADV_LUANCH_RANGE;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -21,7 +22,7 @@ static function X2AbilityTemplate TorpedoMountAbility_Standard()
 	local X2AbilityCost_Ammo                AmmoCost;
 	local X2AbilityCost_ActionPoints        ActionPointCost;
 	local X2Effect_ApplyWeaponDamage        WeaponDamageEffect;
-	local X2AbilityTarget_Cursor            CursorTarget;
+	local X2AbilityTarget_Cursor_ex            CursorTarget;
 	local X2AbilityMultiTarget_Radius       RadiusMultiTarget;
 	local X2Condition_UnitProperty          UnitPropertyCondition;
 	local X2AbilityToHitCalc_StandardAim    StandardAim;
@@ -45,8 +46,9 @@ static function X2AbilityTemplate TorpedoMountAbility_Standard()
 
 
 	
-	CursorTarget = new class'X2AbilityTarget_Cursor';
+	CursorTarget = new class'X2AbilityTarget_Cursor_ex';
 	CursorTarget.bRestrictToWeaponRange = true;
+	CursorTarget.AdvTorpedoBonusRange = default.ADV_LUANCH_RANGE;
 	Template.AbilityTargetStyle = CursorTarget;
 
 	RadiusMultiTarget = new class'X2AbilityMultiTarget_Radius';
@@ -138,10 +140,12 @@ simulated function XComGameState TorpedoReloadAbility_BuildGameState( XComGameSt
 	local XComGameStateContext_Ability AbilityContext;
 	local XComGameState_Ability AbilityState;
 	local XComGameState_Item WeaponState, NewWeaponState;
-	local array<X2WeaponUpgradeTemplate> WeaponUpgrades;
-	local bool bFreeReload;
-	local int i;
+	local XComGameState_Unit SourceUnit;
 
+	local XComGameStateHistory History;
+	local bool bFreeReload;
+
+	History = `XCOMHISTORY;
 	NewGameState = `XCOMHISTORY.CreateNewGameState(true, Context);	
 	AbilityContext = XComGameStateContext_Ability(Context);	
 	AbilityState = XComGameState_Ability(`XCOMHISTORY.GetGameStateForObjectID( AbilityContext.InputContext.AbilityRef.ObjectID ));
@@ -151,17 +155,17 @@ simulated function XComGameState TorpedoReloadAbility_BuildGameState( XComGameSt
 
 	UnitState = XComGameState_Unit(NewGameState.CreateStateObject(class'XComGameState_Unit', AbilityContext.InputContext.SourceObject.ObjectID));	
 
-	//  check for free reload Effect TODO
+	//  check for free reload Effect via auto reloading skill TODO 
 	bFreeReload = false;
-	WeaponUpgrades = WeaponState.GetMyWeaponUpgradeTemplates();
-	for (i = 0; i < WeaponUpgrades.Length; ++i)
-	{
-		if (WeaponUpgrades[i].FreeReloadCostFn != none && WeaponUpgrades[i].FreeReloadCostFn(WeaponUpgrades[i], AbilityState, UnitState))
+
+		SourceUnit = XComGameState_Unit(History.GetGameStateForObjectID(AbilityState.OwnerStateObject.ObjectID));
+
+		if ( SourceUnit.HasSoldierAbility('TorpedoAutoLoader') )
 		{
 			bFreeReload = true;
-			break;
+		
 		}
-	}
+	
 	if (!bFreeReload)
 		AbilityState.GetMyTemplate().ApplyCost(AbilityContext, AbilityState, UnitState, NewWeaponState, NewGameState);	
 

@@ -32,6 +32,9 @@
     </Content>
     <Content Include="ModPreview.jpg" />
     <Content Include="ReadMe.txt" />
+    <Content Include="Src\XKanCAClass\Classes\X2AbilityTarget_Cursor_ex.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\XKanCAClass\Classes\X2Ability_CAClass.uc">
       <SubType>Content</SubType>
     </Content>
@@ -41,13 +44,13 @@
     <Content Include="Src\XKanCAClass\Classes\X2Effect_BroadsideBulges.uc">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Src\XKanCAClass\Classes\X2Effect_Preparedness.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\XKanCAClass\Classes\X2Effect_TorpedoWarhead.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\XKanCAClass\Classes\X2Item_Torpedo_Weapon.uc">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Src\XKanCAClass\Classes\XComGameState_CAClass_Ability.uc">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>

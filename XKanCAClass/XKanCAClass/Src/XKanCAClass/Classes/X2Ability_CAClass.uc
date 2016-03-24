@@ -5,7 +5,7 @@ class X2Ability_CAClass extends X2Ability
 
 var config int FLANK_DAMAGE_REDUCTION;
 var config int TURBINE_BOOST_MOBILITY;
-var config int ADV_LUANCH_RANGE;
+
 
 // Add abilities to game data
 static function array<X2DataTemplate> CreateTemplates()
@@ -14,7 +14,10 @@ static function array<X2DataTemplate> CreateTemplates()
 	
 	Templates.AddItem( BroadsideBulges() );
 	Templates.AddItem( TurbineBoost());
-	Templates.AddItem(TorpedoWarhead() ); //TODO
+	Templates.AddItem( TorpedoWarhead() ); 
+	Templates.AddItem( Advtorpedoluanching() );
+	Templates.AddItem( PurePassive('TorpedoAutoLoader', "img:///UILibrary_XKANCA.perk_torp_reload", true));
+	Templates.AddItem( Preparedness()  );
 
 	return Templates;
 }
@@ -89,7 +92,7 @@ static function X2AbilityTemplate TorpedoWarhead()
 	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
 	Template.AbilityTriggers.AddItem(Trigger);
 
-	Effect = new class'X2Effect_TorpedoWarhead ';
+	Effect = new class'X2Effect_TorpedoWarhead';
 	Effect.BuildPersistentEffect(1, true, false, false);
 	Template.AddShooterEffect(Effect);
 
@@ -260,7 +263,56 @@ static function X2AbilityTemplate TorpedoAutoLoaderTrigger()
 
 
 //-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
 
+
+//  Preparedness --------------------------------------------------------------------------
+
+static function X2AbilityTemplate Preparedness() 
+{
+
+	local X2AbilityTemplate						Template;
+	local X2Effect_Preparedness                 DamageEffect;
+	local X2AbilityTargetStyle                  TargetStyle;
+	local X2AbilityTrigger						Trigger;
+	
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'Preparedness');
+
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_extrapadding";      //todo
+
+
+
+	TargetStyle = new class'X2AbilityTarget_Self';
+	Template.AbilityTargetStyle = TargetStyle;
+	Template.AbilityToHitCalc = default.DeadEye;
+
+	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
+	Template.AbilityTriggers.AddItem(Trigger);
+
+	DamageEffect = new class'X2Effect_Preparedness';
+	//Effect.BuildPersistentEffect(1, true, false, false);
+	DamageEffect.BuildPersistentEffect(1, true, false, false);
+	DamageEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true,,Template.AbilitySourceName);
+	Template.AddTargetEffect(DamageEffect);
+
+
+	
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	//  NOTE: No visualization on purpose!
+
+
+	
+
+	return Template;
+
+}
+
+
+//-------------------------------------------------------------------------------------
 
 //  Adv torpedo Mount --------------------------------------------------------------------------
 
@@ -269,9 +321,9 @@ static function X2AbilityTemplate Advtorpedoluanching()
 	local X2AbilityTemplate						Template;
 	local X2AbilityTargetStyle                  TargetStyle;
 	local X2AbilityTrigger						Trigger;
-	local X2Effect_VolatileMix                  AdvLuanchEffect;
+	//local X2Effect_VolatileMix                  AdvLuanchEffect;
 
-	`CREATE_X2ABILITY_TEMPLATE(Template, 'Advtorpedoluanching');
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'Advtorpedoluanching');          //
 
 	// Icon Properties
 	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_volatilemix";
@@ -288,11 +340,12 @@ static function X2AbilityTemplate Advtorpedoluanching()
 	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
 	Template.AbilityTriggers.AddItem(Trigger);
 
+	/*
 	AdvLuanchEffect = new class'X2Effect_VolatileMix';
 	AdvLuanchEffect.BuildPersistentEffect(1, true, true, true);
 	AdvLuanchEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage,,,Template.AbilitySourceName);
 	AdvLuanchEffect.BonusDamage = default.ADV_LUANCH_RANGE;
-	Template.AddTargetEffect(AdvLuanchEffect);
+	Template.AddTargetEffect(AdvLuanchEffect); */
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	//  NOTE: No visualization on purpose!

@@ -62,6 +62,7 @@ static function X2DataTemplate CreateTemplate_Torpedo_Triple_Conventional()
 	Template.iRadius = default.TORP_TRIPLE_RADIUS;
 
 
+
 	Template.NumUpgradeSlots = 0;
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
 	Template.StowedLocation = eSlot_HeavyWeapon;

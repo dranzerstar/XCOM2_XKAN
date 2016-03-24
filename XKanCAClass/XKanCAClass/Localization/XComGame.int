@@ -13,7 +13,7 @@ DisplayName="HeavyCrusier"
 ClassSummary="<Bullet/>Ship Class designed to Operate at Short to Medium range and having balanced speed and armor.<br/><Bullet/>Armed with Medium range Cannons and Torpedos for short range.<br/>"
 
 LeftAbilityTreeTitle="Fire Support"
-RightAbilityTreeTitle="Assult"
+RightAbilityTreeTitle="Assault"
 
 RandomNickNames_Female[0]="Myoukou"
 RandomNickNames_Female[1]="Takao"
@@ -66,7 +66,7 @@ RandomNickNames_Female[2]="Furutaka"
 
 
 ; T2 Skills   Fire Support: Preparedness     Assault: Enhanced Torpedo Warhead
-[preparedness X2AbilityTemplate]
+[Preparedness X2AbilityTemplate]
 +LocFriendlyName="Preparedness"
 +LocLongDescription="Taking time readying your Broadside Main Weapons increses their aim."
 +LocHelpText="First Shot on your Clip of your Main weapons deals extra damage."
